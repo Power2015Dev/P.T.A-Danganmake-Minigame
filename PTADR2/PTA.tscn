@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://xfynrg3vnx5u"]
+
+[ext_resource type="Script" uid="uid://b5bb45ojv68f4" path="res://PTADR2/Pta.gd" id="1_26mrl"]
+[ext_resource type="Shader" uid="uid://cgsg0fw2ig4qf" path="res://PTADR2/PTA.gdshader" id="2_uchih"]
+[ext_resource type="Texture2D" uid="uid://bbqc08wfdvew6" path="res://PTADR2/02 - Button circles and rhythm ring (A B X Y)/busou_arch_01.png" id="3_yl3w3"]
+[ext_resource type="Texture2D" uid="uid://d20jgdr6hb1ds" path="res://PTADR2/02 - Button circles and rhythm ring (A B X Y)/busou_arch_bt_01.png" id="4_blqol"]
+[ext_resource type="AudioStream" uid="uid://fdda60esgq2c" path="res://Minigame_Music/P.T.A.mp3" id="4_o11ld"]
+[ext_resource type="Script" uid="uid://cgxdfjl382ytu" path="res://PTADR2/audio_beat_offset.gd" id="4_yl3w3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1fef"]
+shader = ExtResource("2_uchih")
+shader_parameter/zoom_x = 1.90100008703762
+shader_parameter/zoom_y = 0.71100003051262
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = -0.06299990799249988
+shader_parameter/perspective = 2.82000013395
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsuaf"]
+shader = ExtResource("2_uchih")
+shader_parameter/zoom_x = 1.4200000641901198
+shader_parameter/zoom_y = 1.0180000450951199
+shader_parameter/offset_x = 0.0
+shader_parameter/offset_y = 0.06900009827749987
+shader_parameter/perspective = 1.2
+
+[node name="Minigame" type="CanvasLayer" unique_id=855698764]
+layer = 20
+script = ExtResource("1_26mrl")
+
+[node name="Base" type="Control" parent="." unique_id=537606263]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base_dish" type="TextureRect" parent="Base" unique_id=1467431601]
+texture_filter = 5
+material = SubResource("ShaderMaterial_s1fef")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yl3w3")
+
+[node name="ball" type="TextureRect" parent="Base" unique_id=1960335073]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qsuaf")
+layout_mode = 0
+offset_left = 41.0
+offset_top = 580.0
+offset_right = 81.0
+offset_bottom = 620.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_blqol")
+
+[node name="ball2" type="TextureRect" parent="Base" unique_id=724965236]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qsuaf")
+layout_mode = 0
+offset_left = 1730.0
+offset_top = 577.0
+offset_right = 1770.0
+offset_bottom = 617.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_blqol")
+
+[node name="balls_container" type="Control" parent="Base" unique_id=215631792]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=99840198]
+stream = ExtResource("4_o11ld")
+script = ExtResource("4_yl3w3")
+
+[connection signal="next_beat" from="Music" to="." method="_on_music_next_beat"]
+[connection signal="next_measure" from="Music" to="." method="_on_music_next_measure"]

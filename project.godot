@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Minigame base template"
+config/name="PTA Dr2"
 run/main_scene="uid://rkrtdl2j5hpm"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -25,9 +25,9 @@ buses/default_bus_layout="uid://dsns2ia6mch1f"
 [autoload]
 
 GlobalSound="*uid://d3x2s16rxh6u2"
-GlobalStates="*uid://bd1arpx3ltxsj"
-CharacterList="*uid://51elas1bgkhd"
-CharacterScript="*uid://c5huvluu0iitq"
+GlobalStates="*uid://ds56h8q0hymn1"
+CharacterList="*uid://cwi2q0itkqkcm"
+CharacterScript="*uid://c4a67b5upgrhx"
 
 [display]
 
